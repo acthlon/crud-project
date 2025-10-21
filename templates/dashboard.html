@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="../static/assets/css/header.css">
+       <link rel="stylesheet" href="../static/assets/css/general.css">
+    <link rel="stylesheet" href="../static/assets/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-header">
+        <div class="left">
+            <a class="project" href="#">ProjectX</a>
+            <a class="dashboard" href="">Dashboard</a>
+            <a class="logout" href="logout">Sign out</a>
+            <a class="admin" href="http://127.0.0.1:8000/admin/">admin</a>
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <div class="body-div">
+        <div class="dashboard-main-div">
+            <div class="dash-div1">
+                <p>Hi, {{user}}!</p>
+            </div>
+
+            <hr>
+
+            <div class="dash-div2">
+                <button class="new-record-buttom"> <a href="create" target="_blank"  >Create new record</a></button>
+            </div>
+              <div class="dashboard-table-div">
+
+                    <div class="dashboard-table-div1">
+                        <div class="id">
+                            ID
+                        </div>
+    
+                        <div class="name">
+                            Name
+                        </div>
+                            
+                        <div class="email">
+                            Email
+                        </div>
+    
+                        <div class="phone">
+                            Phone
+                        </div>
+    
+                        <div class="address">
+                            Address
+                        </div>
+                        <div class="city">
+                            City
+                        </div>
+    
+                        <div class="Province">
+                            Province
+                        </div>
+                        <div class="country">
+                            Country
+                        </div>
+                        
+                        <div class="created-at">
+                            Created at
+                        </div>
+                        
+                        <div class="view">
+                            View
+                        </div>
+                    </div>
+                    
+
+                    <div class="dashboard-table-div2">
+                        {% for person in persons%}
+
+                            <div class="id">
+                                {{person.id}}
+                            </div>
+            
+                            <div class="name">
+                                {{person.first_name}}
+                            </div>
+            
+                            
+                            <div class="email">
+                                {{person.email}}
+                            </div>
+            
+                            <div class="phone">
+                                {{person.phone}}
+                            </div>
+            
+                            <div class="address">
+                                {{person.address}}
+                            </div>
+                            <div class="city">
+                                {{person.city}}
+                            </div>
+            
+                            <div class="Province">
+                                {{person.province}}
+                            </div>
+                            <div class="country">
+                                {{person.country}}
+                            </div>
+                            
+                            <div class="created-at">
+                                {{person.created_at}} 
+                            </div>
+
+                            <!-- if yu want t use pk you will erite it like this  -->
+                            <!-- <a class="view" href="details/{{person.id}}" type="button">View</a>  -->
+                             
+                             <!-- if you want to use persn.id you will write it this way -->
+                            <a class="view" href="{% url 'details' person.id %}" type="button">View</a> 
+                                
+                        {%endfor%} 
+                    </div>
+
+                   
+                </div>    
+
+                <!-- <table>
+
+                    <thead>
+
+                        <tr class="table">
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Province</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">View</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            
+                        </tr>
+                    </tbody>
+                </table> -->
+          
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+
+
+    <link rel="stylesheet" href="../static/assets/css/general.css">
+    <link rel="stylesheet" href="../static/assets/css/register.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <a class="project" href="/">ProjectX</a>
+            <a class="register" href="register">Register</a>
+            <a class="login" href="login">Login</a>
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <div class="body-div">
+        <div class="main-div">
+            <div class="div1">
+                <div class="create">
+                    <p>Create your account</p>
+                </div>
+                <div class="start">
+                    <p>start managing your client today!</p>
+                </div>
+            </div>
+
+            <!-- {{form}} -->
+
+       <div class="sub-main-div2">
+
+            <div class="div2">
+
+                
+                <form action="register" method="POST" class="form-class">
+                    {%csrf_token%}
+  
+                    <p>Username*</p>
+                    <input class="input-class" type="text" name="username">
+                    <p class="required-p">Required 150 characters or fewer.Letters,digitals and @/,/+/-/_only</p>
+
+
+                    <p>Password*</p>
+                    <input class="input-class" type="text" name="password">
+                    <div class="required">
+                        <p> <span class="span-text">&#183;</span> Your password can't be too similar to your other personal information.</p>        
+                        
+                        <p> <span class="span-text">&#183;</span> Your password must contain at least 8 characters.</p>
+
+                        <p> <span class="span-text">&#183;</span> Your password can't be a commonly used password.</p>
+
+                        <p><span class="span-text">&#183;</span>Your password can't be entirely numeric</p>
+                    </div>
+
+
+
+                    <p class="password-confirm">Password confirmation*</p>
+                    <input class="input-class" type="text" name="password-confirm">
+                    <p class="required">Enter the same password as before for verification </p>
+                    <button class="create-button">Create account</button>
+                </form>
+                <div class="last-div">
+                    <p>Already have an account?</p> 
+                    <a class="a-login-class" href="login">Login</a>
+                </div>
+            </div>
+
+
+  
+        </div> 
+    </div>
+</body>
+</html>

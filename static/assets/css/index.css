@@ -1,0 +1,96 @@
+.index-header {
+    background-color: rgb(2, 7, 111);
+    height: 70px;
+    display: flex;
+    margin-bottom: 20px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+
+.left {
+    display: flex;
+    /* background-color:#b21414; */
+    height: 100%;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.right {
+    flex: 1;
+}
+
+.project {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+.register,
+.login {
+    color: white;
+    text-decoration: none;
+}
+
+.main-div {
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 500px;
+    background-color: rgb(241, 238, 238);
+    border-radius: 4px;
+    
+
+}
+
+
+.middle-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    /* border-color: red; */
+    border-bottom-style: solid;
+    border-bottom-color: rgb(211, 201, 201);
+    border-bottom-width: 2px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 150px;
+
+}
+
+.manage {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.keep {
+    font-size: 17px;
+}
+
+.keep-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.create-botton {
+    padding: 7px;
+    background-color: rgb(2, 7, 111);
+    color: white;
+    text-decoration:none;
+}
+
+.buttom {
+    display: flex;
+    justify-content: center;
+}
+
+

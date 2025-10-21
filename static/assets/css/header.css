@@ -1,0 +1,36 @@
+.header {
+    background-color: rgb(2, 7, 111);
+    height: 70px;
+    display: flex;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+}
+
+.left {
+    display: flex;
+    /* background-color:#b21414; */
+    height: 100%;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.right {
+    flex: 1;
+}
+
+.project {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard,
+.logout,.admin {
+    color: white;
+    text-decoration: none;
+}

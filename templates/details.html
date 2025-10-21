@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+
+    <link rel="stylesheet" href="../static/assets/css/header.css">
+    <link rel="stylesheet" href="../static/assets/css/details.css">
+    <link rel="stylesheet" href="../static/assets/css/dashboard.css">
+
+    <link rel="stylesheet" href="../static/assets/css/general.css">
+</head>
+<body>
+    <div class="dashboard-header">
+        <div class="left">
+            <a class="project" href="#">ProjectX</a>
+            <a class="register" href="/dashboard">Dashboard</a>
+            <a class="login" href="logout">Signout</a>
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <div class="body-div">
+        <div class="container-div">
+            <div class="top-div">
+                {% if detail%}
+                <p>{{detail.last_name|upper}} {{detail.first_name}}</p>
+                {%endif%}
+            </div>
+            <div class="bottom-div">
+                {% if detail %}
+                    <p><span>ID</span> :{{detail.id}}</p>
+                    <p><span>Email</span>:{{detail.email}}</p>
+                    <p><span>Phone</span>:{{detail.phone}}</p>
+                    <p><span>Address</span>:{{detail.address}}</p>
+                    <p><span>City</span>:{{detail.city}}</p>
+                    <p><span>Providence</span>:{{detail.province}}</p>
+                    <p><span>Country</span>:{{detail.country}}</p>
+                    <p><span>Entry Date</span>:{{detail.created_date}}</p>
+                {%endif%}    
+            </div>
+          </div>
+
+          <div class="button-div">
+            <a href="/dashboard" type="button" class="button1">Return</a> 
+            {% if detail%}
+                <a href="/update/{{detail.id}}" type="button"  class="button2">Update record</a>
+              
+            <a href="{% url 'delete' detail.id %}" type="button"  class="button3">Delete record</a>
+            {% endif %}  
+          </div>
+    </div>
+</body>
+</html>

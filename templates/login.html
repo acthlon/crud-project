@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+
+    <link rel="stylesheet" href="../static/assets/css/login.css">
+    <link rel="stylesheet" href="../static/assets/css/general.css">
+</head>
+<body>
+    <div class="login-header">
+        <div class="left">
+            <a class="project" href="/">ProjectX</a>
+            <a class="register" href="register">Register</a>
+            <a class="login" href="login">Login</a>
+        </div>
+        <div class="right"></div>
+    </div>
+
+    {{form2}}
+    
+    <div class="body-div">
+        <div class="main-div">
+            <div class="div1">
+                <div class="create">
+                    <p>Login to your account</p>
+                </div>
+            </div>
+
+            <div class="sub-main-div2">
+
+                <div class="div2">
+                    <form action="login" method="POST">
+                        {%csrf_token%}
+                        <p>Username*</p>
+                        <input class="input-class" type="text" name="username">
+
+                        <p>Password*</p>
+                        <input class="input-class" type="text" name="password">
+                        <div class="login-div">
+                            <button class="create-button">Login</button>
+                            <p>Don't have an account?</p> 
+                            <a class="a-login-class" href="">Register</a>
+                        </div>
+                    </form>
+            </div>    
+        </div>
+    </div>
+</body>
+</html>
