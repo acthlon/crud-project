@@ -1,4 +1,20 @@
 from django.contrib import admin
-from . models import Person
+from django.contrib.auth.admin import UserAdmin
+from . models import CustomUser,Account
 
-admin.site.register(Person)
+class CustomUserAdmin(UserAdmin):
+    list_display = ('username', 'email', 'first_name', 'last_name', 'city', 'state', 'phone')
+    search_fields = ('username', 'email', 'first_name', 'last_name', 'city')
+    ordering = ('username',)
+
+
+admin.site.register(CustomUser,CustomUserAdmin)
+
+
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'phone', 'city', 'country', 'created_at')
+    search_fields = ('first_name', 'last_name', 'email', 'city', 'country')
+    ordering = ('first_name',)
+
+
+admin.site.register(Account,AccountAdmin)     

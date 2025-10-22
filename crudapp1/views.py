@@ -5,10 +5,13 @@ from django.shortcuts import redirect, render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets,views 
-from crudapp1.models import Person
+from crudapp1.models import Account
 
-from .forms import CreatePersonForm, CreateUserForm, LoginForm, UpdatePersonForm
+from .forms import CreateAccountForm, CreateUserForm, LoginForm, UpdateAccountForm
 
+
+
+# METHOD 1 OF REGISTERING IN USING THE DJANGO FORM 
 
 def registerform(request):
 
@@ -21,9 +24,14 @@ def registerform(request):
             form.save()
 
             return redirect("")
-    return render(request, "register.html", {"form": form})
+    context = {"form": form}
+
+    return render(request, "register.html",context=context)
 
 
+
+# METHOD 1 OF LOGINING IN USING THE DJANGO FORM
+#  
 def loginform(request):
 
     form2 = LoginForm()
@@ -46,7 +54,9 @@ def loginform(request):
             messages.info(request, "this user is not regiastered yet")
             return redirect("register")
 
-    return render(request, "login.html", {"form2": form2})
+
+    context = {"form2": form2}      
+    return render(request, "login.html", context=context)
 
 
 def user_logout(request):
@@ -57,8 +67,12 @@ def user_logout(request):
 
 def index(request):
 
-    person = Person.objects.all()
-    return render(request, "index.html", {"p" "ersons": person})
+    account = Account.objects.all()
+    context = {"account":account}
+    return render(request, "index.html", context=context)
+
+
+# MY CUSTOM METHOD DEFINED BELOW FOR REGISTER AND LOGIN WITHOUT DJANGO FORMS
 
 
 def register(request):
@@ -117,12 +131,12 @@ def login(request):
 )  # this line of code ensures that only user thta is authenticated or logged in  can have access to sees the dashboard if you are able too login to the backend  of the website it means ure are an admin ao if any other user logged in into the website initially , if you refresh the sebsite , it will log the user out and log you in but if you now logout of the backend after this , the it will redirect us to the loginpage again
 def dashboard(request):
 
-    person = Person.objects.all()
-    return render(request, "dashboard.html", {"persons": person})
+    account = Account.objects.all()
+    context = {"account": account}
+    return render(request, "dashboard.html", context=context)
 
 
 def logout(request):
-    #  user = auth.authenticate(username=username,password=password)
     auth.logout(request)
     return redirect("/")
 
@@ -130,7 +144,7 @@ def logout(request):
 def details(request, pk):
     if pk:
         # try:
-        detail = Person.objects.get(id=pk)
+        detail = Account.objects.get(id=pk)
         # except Person.DoesNotExist:
         # messages.error
         return render(request, "details.html", {"detail": detail})
@@ -153,7 +167,7 @@ def create(request):
 
 def update(request, pk):
 
-    record = Person.objects.get(id=pk)
+    record = Account.objects.get(id=pk)
     form = UpdatePersonForm(instance=record)
 
     if request.method == "POST":
@@ -169,7 +183,7 @@ def update(request, pk):
 
 def delete(request, pk):
 
-    record = Person.objects.get(id=pk)
+    record = Account.objects.get(id=pk)
     messages.success(request,'record has been deleted')
     record.delete()
 
