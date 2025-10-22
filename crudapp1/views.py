@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets,views 
-from crudapp1.models import Account
+from crudapp1.models import Account,CustomUser
 
 from .forms import CreateAccountForm, CreateUserForm, LoginForm, UpdateAccountForm
 
@@ -84,7 +84,7 @@ def register(request):
 
         if password == password_confirm:
 
-            if User.objects.filter(username=username).exists():
+            if CustomUser.objects.filter(username=username).exists():
                 messages.info(request, "this username already exist")
                 return redirect("register")
 
@@ -94,7 +94,7 @@ def register(request):
             #     messages.info(request,'this email is already in use')
             #     return redirect('register')
             else:
-                user = User.objects.create_user(username=username, password=password)
+                user = CustomUser.objects.create_user(username=username, password=password)
                 user.save()
                 messages.success(request,'user has been registered successfully')
                 return redirect("login")
@@ -152,27 +152,28 @@ def details(request, pk):
 
 def create(request):
 
-    form = CreatePersonForm()
+    form = CreateAccountForm()
 
     if request.method == "POST":
 
-        form = CreatePersonForm(request.POST)
+        form = CreateAccountForm(request.POST)
         if form.is_valid():
             form.save()
     
             return redirect("dashboard")
 
+    context = {"form": form}
     return render(request, "create-record-django.html", {"form": form})
 
 
 def update(request, pk):
 
     record = Account.objects.get(id=pk)
-    form = UpdatePersonForm(instance=record)
+    form = UpdateAccountForm(instance=record)
 
     if request.method == "POST":
 
-        form = UpdatePersonForm(request.POST, instance=record)
+        form = UpdateAccountForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
             messages.success(request,'record has been updated successfully')

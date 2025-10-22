@@ -26,7 +26,7 @@
                 <p>Hi, {{user}}!</p>
             </div>
 
-            <hr>
+            <!-- <hr> -->
 
             <div class="dash-div2">
                 <button class="new-record-buttom"> <a href="create" target="_blank"  >Create new record</a></button>
@@ -75,48 +75,48 @@
                     
 
                     <div class="dashboard-table-div2">
-                        {% for person in persons%}
+                        {% for account in account%}
 
                             <div class="id">
-                                {{person.id}}
+                                {{account.id}}
                             </div>
             
                             <div class="name">
-                                {{person.first_name}}
+                                {{account.first_name}}
                             </div>
             
                             
                             <div class="email">
-                                {{person.email}}
+                                {{account.email}}
                             </div>
             
                             <div class="phone">
-                                {{person.phone}}
+                                {{account.phone}}
                             </div>
             
                             <div class="address">
-                                {{person.address}}
+                                {{account.address}}
                             </div>
                             <div class="city">
-                                {{person.city}}
+                                {{account.city}}
                             </div>
             
                             <div class="Province">
-                                {{person.province}}
+                                {{account.province}}
                             </div>
                             <div class="country">
-                                {{person.country}}
+                                {{account.country}}
                             </div>
                             
                             <div class="created-at">
-                                {{person.created_at}} 
+                                {{account.created_at}} 
                             </div>
 
                             <!-- if yu want t use pk you will erite it like this  -->
-                            <!-- <a class="view" href="details/{{person.id}}" type="button">View</a>  -->
+                            <!-- <a class="view" href="details/{{account.id}}" type="button">View</a>  -->
                              
                              <!-- if you want to use persn.id you will write it this way -->
-                            <a class="view" href="{% url 'details' person.id %}" type="button">View</a> 
+                            <a class="view" href="{% url 'details' account.id %}" type="button">View</a> 
                                 
                         {%endfor%} 
                     </div>
