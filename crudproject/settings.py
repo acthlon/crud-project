@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-LOCAL_HOST = "8100" 
+
 
 
 # Application definition
