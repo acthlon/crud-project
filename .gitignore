@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Database
+db.sqlite3
+
+# Python Optimization (Junk)
+__pycache__/
+*.pyc
+
+# Environments
+.venv/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

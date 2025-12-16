@@ -82,7 +82,12 @@ def register(request):
         password = request.POST["password"]
         password_confirm = request.POST["password-confirm"]
 
-        if password == password_confirm:
+
+        if password != password_confirm:
+            messages.info(request, "ensure the password correlate with the first one ")
+            return redirect("register")
+
+        elif password == password_confirm:
 
             if CustomUser.objects.filter(username=username).exists():
                 messages.info(request, "this username already exist")
@@ -98,9 +103,7 @@ def register(request):
                 user.save()
                 messages.success(request,'user has been registered successfully')
                 return redirect("login")
-        elif password != password_confirm:
-            messages.info(request, "ensure the password correlate with the first one ")
-            return redirect("register")
+
 
     return render(request, "register.html")
 
@@ -143,10 +146,10 @@ def logout(request):
 
 def details(request, pk):
     if pk:
-        # try:
-        detail = Account.objects.get(id=pk)
-        # except Person.DoesNotExist:
-        # messages.error
+        try:
+            detail = Account.objects.get(id=pk)
+        except Account.DoesNotExist:
+            messages.error
         return render(request, "details.html", {"detail": detail})
 
 
@@ -189,3 +192,4 @@ def delete(request, pk):
     record.delete()
 
     return redirect("dashboard")
+
